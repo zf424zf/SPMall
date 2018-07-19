@@ -1,4 +1,6 @@
 <!--index.wxml-->
+<button type="primary" style='margin-top:20px' size='default' bindtap="getCode"> 获取code </button>
+<button type="warn" style='margin-top:20px' size='default' bindtap="checkLogin"> 检查登陆状态 </button>
 <view class="container">
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
@@ -7,7 +9,7 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-  <button type="primary" bindtap="getCode"> 获取code </button>
+  
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
