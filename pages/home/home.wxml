@@ -1,5 +1,25 @@
 <!--pages/home/home.wxml-->
 <view>
-  <swiper></swiper>
-  <view></view>
+  <swiper indicator-dots="true" autoplay='true' class='swiper'>
+    <block wx:for="{{bannerList}}">
+      <swiper-item class='banner-item'>
+        <image mode='aspectFit' src='{{item.image.url}}' class='item-image'></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class='container'>
+
+  <view class='theme'>
+  <view class='theme-title'>精选主题</view>
+  <view class='theme-body'>
+  <block wx:for='{{themeList}}'>
+  <image src='{{item.topic_image.url}}'></image>
+  </block>
+  </view>
+  </view>
+
+  <view class='products'></view>
+  </view>
+
 </view>

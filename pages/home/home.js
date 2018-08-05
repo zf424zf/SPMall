@@ -67,11 +67,17 @@ Page({
   onShareAppMessage: function () {
   
   },
+
   getData () {
     let id = 1;
     home.getBanner(id,(res) => {
-      this.bannerList = res.data[0]
-      console.log(this.bannerList)
+      this.setData({ bannerList: res});
     })
+
+    let themeIds = '1,2,3'
+    home.getTheme(themeIds, (res) => {
+      this.setData({themeList: res});
+      console.log(res)
+    });
   }
 })
