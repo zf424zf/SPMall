@@ -1,8 +1,6 @@
-// pages/home/home.js
-import {Home} from 'home-data.js'
-import {Base} from '../../utils/base.js'
+import {Theme} from './theme-data.js'
 
-let home = new Home();
+let theme = new Theme();
 
 Page({
 
@@ -10,14 +8,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    bannerList:[]
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getData();
+    let id = options.id
+    this.getThemeInfo(id)
   },
 
   /**
@@ -68,37 +67,10 @@ Page({
   onShareAppMessage: function () {
   
   },
-
-  getData () {
-    let id = 1;
-    home.getBanner(id,(res) => {
-      this.setData({ bannerList: res});
-    })
-
-    let themeIds = '1,2,3'
-    home.getTheme(themeIds, (res) => {
-      this.setData({themeList: res});
+  getThemeInfo(id){
+    theme.getThemeInfo(id, (res)=>{
       console.log(res)
-    });
-
-    home.getProducts( (res)=>{
-      this.setData({products: res});
-      console.log(res)
-    });
-  },
-  goToProductItem (event) {
-    let base = new Base();
-    let id = base.getDataSet(event,'id')
-    wx.navigateTo({
-      url: '../product/product?id='+id,
-    })
-  },
-
-  goToTheme(event) {
-    let base = new Base();
-    let id = base.getDataSet(event, 'id')
-    wx.navigateTo({
-      url: '../theme/theme?id=' + id,
+      this.setData({theme:res,products:res.products})
     })
   }
 })

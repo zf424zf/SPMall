@@ -25,4 +25,15 @@ export class Home extends Base{
     }
     this.request(params)
   }
+
+  getProducts(callback){
+    var params = {
+      url: 'product/recent',
+      method: 'GET',
+      successCallBack(res) {
+        callback && callback(res);
+      }
+    }
+    this.request(params)
+  }
 }

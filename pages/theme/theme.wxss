@@ -1,0 +1,24 @@
+@import "../tpls/base.wxss";
+@import "../tpls/products/product-tpl.wxss";
+
+.theme-container{
+
+}
+.theme-image {
+  height: 400rpx;
+  margin-bottom:30rpx;
+  position: relative;
+}
+.theme-image image{
+  width: 100%;
+  height: 100%;
+}
+.theme-image .word view{
+  font-size: 28rpx;
+}
+.theme-image .word view:first-child{
+  font-size: 40rpx;
+  margin-bottom: 20rpx;
+}
+
+

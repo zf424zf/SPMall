@@ -1,8 +1,9 @@
 <!--pages/home/home.wxml-->
-<view>
+<import src="../tpls/products/product-tpl.wxml" />
+<view class="container">
   <swiper indicator-dots="true" autoplay='true' class='swiper'>
     <block wx:for="{{bannerList}}">
-      <swiper-item class='banner-item'>
+      <swiper-item class='banner-item' data-id="{{item.key_word}}" bindtap="goToProductItem">
         <image mode='aspectFit' src='{{item.image.url}}' class='item-image'></image>
       </swiper-item>
     </block>
@@ -10,16 +11,25 @@
 
   <view class='container'>
 
-  <view class='theme'>
-  <view class='theme-title'>精选主题</view>
-  <view class='theme-body'>
-  <block wx:for='{{themeList}}'>
-  <image src='{{item.topic_image.url}}'></image>
-  </block>
-  </view>
-  </view>
+    <view class='theme'>
+      <view class='theme-title'>精选主题</view>
+      <view class='theme-body'>
+        <block wx:for='{{themeList}}'>
+          <view wx:if="{{index == 2 }}" class="theme-item large" bindtap='goToTheme' data-id="{{item.id}}">
+            <image src='{{item.topic_image.url}}'></image>
+          </view>
+          <view wx:else class="theme-item" data-id="{{item.id}}" bindtap='goToTheme'>
+            <image src='{{item.topic_image.url}}'></image>
+          </view>
+          <!-- <image src='{{item.topic_image.url}}'></image> -->
+        </block>
+      </view>
+    </view>
 
-  <view class='products'></view>
+    <view class='products'>
+      <view class='products-title'>最新商品</view>
+      <template is="products" data="{{products}}"></template>
+    </view>
   </view>
 
 </view>
