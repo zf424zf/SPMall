@@ -8,7 +8,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
   },
 
   /**
@@ -16,6 +15,8 @@ Page({
    */
   onLoad: function (options) {
     let id = options.id
+    this.data.name = options.name
+    console.log(options)
     this.getThemeInfo(id)
   },
 
@@ -23,14 +24,15 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    wx.setNavigationBarTitle({
+      title: this.data.name
+    })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
   },
 
   /**
@@ -44,7 +46,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
   },
 
   /**
@@ -69,7 +70,6 @@ Page({
   },
   getThemeInfo(id){
     theme.getThemeInfo(id, (res)=>{
-      console.log(res)
       this.setData({theme:res,products:res.products})
     })
   }

@@ -1,6 +1,10 @@
 // pages/home/home.js
-import {Home} from 'home-data.js'
-import {Base} from '../../utils/base.js'
+import {
+  Home
+} from 'home-data.js'
+import {
+  Base
+} from '../../utils/base.js'
 
 let home = new Home();
 
@@ -10,95 +14,101 @@ Page({
    * 页面的初始数据
    */
   data: {
-    bannerList:[]
+    bannerList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.getData();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  
+  onReady: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-  
+  onShow: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-  
+  onHide: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-  
+  onUnload: function() {
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-  
+  onPullDownRefresh: function() {
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-  
+  onReachBottom: function() {
+
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+  onShareAppMessage: function() {
+
   },
 
-  getData () {
+  getData() {
     let id = 1;
-    home.getBanner(id,(res) => {
-      this.setData({ bannerList: res});
+    home.getBanner(id, (res) => {
+      this.setData({
+        bannerList: res
+      });
     })
 
     let themeIds = '1,2,3'
     home.getTheme(themeIds, (res) => {
-      this.setData({themeList: res});
+      this.setData({
+        themeList: res
+      });
       console.log(res)
     });
 
-    home.getProducts( (res)=>{
-      this.setData({products: res});
-      console.log(res)
+    home.getProducts((res) => {
+      this.setData({
+        products: res
+      });
     });
   },
-  goToProductItem (event) {
+  goToProductItem(event) {
     let base = new Base();
-    let id = base.getDataSet(event,'id')
+    let id = base.getDataSet(event, 'id')
     wx.navigateTo({
-      url: '../product/product?id='+id,
+      url: '../product/product?id=' + id,
     })
   },
 
   goToTheme(event) {
     let base = new Base();
     let id = base.getDataSet(event, 'id')
+    let name = base.getDataSet(event, 'name')
     wx.navigateTo({
-      url: '../theme/theme?id=' + id,
+      url: '../theme/theme?id=' + id + '&name=' + name,
     })
   }
 })

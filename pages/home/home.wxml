@@ -15,10 +15,10 @@
       <view class='theme-title'>精选主题</view>
       <view class='theme-body'>
         <block wx:for='{{themeList}}'>
-          <view wx:if="{{index == 2 }}" class="theme-item large" bindtap='goToTheme' data-id="{{item.id}}">
+          <view wx:if="{{index == 2 }}" class="theme-item large" bindtap='goToTheme' data-id="{{item.id}}" data-name="{{item.name}}">
             <image src='{{item.topic_image.url}}'></image>
           </view>
-          <view wx:else class="theme-item" data-id="{{item.id}}" bindtap='goToTheme'>
+          <view wx:else class="theme-item" data-id="{{item.id}}" bindtap='goToTheme' data-name="{{item.name}}">
             <image src='{{item.topic_image.url}}'></image>
           </view>
           <!-- <image src='{{item.topic_image.url}}'></image> -->
