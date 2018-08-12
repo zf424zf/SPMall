@@ -1,4 +1,8 @@
 // pages/product/product.js
+import {Product} from './product-data.js'
+
+let product = new Product()
+
 Page({
 
   /**
@@ -13,6 +17,7 @@ Page({
    */
   onLoad: function (options) {
     let id = options.id
+    this.getDetail(id)
   },
 
   /**
@@ -62,5 +67,11 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  getDetail(id){
+    product.getDetailInfo(id,(res) => {
+      this.setData({product:res})
+      console.log(res)
+    })
   }
 })
